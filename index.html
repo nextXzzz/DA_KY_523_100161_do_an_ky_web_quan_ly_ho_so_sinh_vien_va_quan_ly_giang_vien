@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - Quản Lý Hồ Sơ Sinh Viên và Giảng Viên</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-left">
+            <div class="brand-content">
+                <h1>QUẢN LÝ HỒ SƠ SINH VIÊN VÀ GIẢNG VIÊN</h1>
+                <p>Hệ thống quản lý toàn diện, hiện đại và bảo mật.</p>
+                <ul class="feature-list">
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                        Quản lý sinh viên
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/></svg>
+                        Quản lý giảng viên
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18V3H3zm16 16H5V5h14v14zM7 10h2v7H7zm4-3h2v10h-2zm4 6h2v4h-2z"/></svg>
+                        Thống kê dashboard
+                    </li>
+                    <li>
+                        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z"/></svg>
+                        Chatbot hỗ trợ
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="login-right">
+            <div class="login-card">
+                <h2>Đăng nhập</h2>
+                <p>Vui lòng đăng nhập để truy cập hệ thống</p>
+                
+                <div class="login-error" id="loginError">
+                    Tên đăng nhập hoặc mật khẩu không đúng!
+                </div>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label class="form-label">Tên đăng nhập</label>
+                        <div class="input-icon-wrapper">
+                            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                            <input type="text" id="username" class="form-input" placeholder="Nhập tên đăng nhập" required autocomplete="username">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Mật khẩu</label>
+                        <div class="input-icon-wrapper">
+                            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+                            <input type="password" id="password" class="form-input" placeholder="Nhập mật khẩu" required autocomplete="current-password">
+                            <button type="button" class="password-toggle" id="togglePassword">
+                                <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn-login" id="submitBtn">Đăng nhập</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Check if already logged in
+        if (sessionStorage.getItem('loggedIn') === 'true') {
+            window.location.href = 'pages/dashboard.html';
+        }
+
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const submitBtn = document.getElementById('submitBtn');
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+
+        // Toggle password visibility
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            // Toggle icon (simplified, could add path change)
+            togglePassword.style.color = type === 'text' ? 'var(--primary-color)' : 'var(--text-light)';
+        });
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = passwordInput.value;
+            
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Đang xử lý...';
+            loginError.style.display = 'none';
+
+            try {
+                const response = await fetch('http://localhost:3000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    sessionStorage.setItem('loggedIn', 'true');
+                    sessionStorage.setItem('user', JSON.stringify(data.user));
+                    window.location.href = 'pages/dashboard.html';
+                } else {
+                    loginError.textContent = data.message || 'Đăng nhập thất bại!';
+                    loginError.style.display = 'block';
+                }
+            } catch (err) {
+                loginError.textContent = 'Không thể kết nối đến máy chủ.';
+                loginError.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Đăng nhập';
+            }
+        });
+    </script>
+</body>
+</html>
