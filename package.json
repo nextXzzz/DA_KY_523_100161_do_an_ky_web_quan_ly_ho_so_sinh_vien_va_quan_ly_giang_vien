@@ -1,0 +1,37 @@
+{
+  "name": "QuanLySinhVienGiangVien",
+  "version": "1.0.0",
+  "description": "Web Quản Lý Hồ Sơ Sinh Viên và Giảng Viên - Node.js + Express + MongoDB",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "seed": "node seed.js",
+    "test": "jest --verbose --forceExit",
+    "test:coverage": "jest --verbose --forceExit --coverage",
+    "test:auth": "jest test/auth.test.js --verbose --forceExit",
+    "test:students": "jest test/students.test.js --verbose --forceExit",
+    "test:lecturers": "jest test/lecturers.test.js --verbose --forceExit"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.3",
+    "mongoose": "^8.3.4"
+  },
+  "devDependencies": {
+    "jest": "^30.4.2",
+    "mongodb-memory-server": "^11.2.0",
+    "nodemon": "^3.1.0",
+    "supertest": "^7.2.2"
+  },
+  "keywords": [
+    "student",
+    "lecturer",
+    "management",
+    "express",
+    "mongodb"
+  ],
+  "author": "QLSVGV Team",
+  "license": "MIT"
+}
